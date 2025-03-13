@@ -56,7 +56,7 @@ ticker = st.text_input("🔍 Enter stock ticker (e.g., AAPL)", max_chars=10)
 
 # Function to fetch stock prediction
 def get_stock_prediction(ticker):
-    backend_url = os.getenv("BACKEND_URL", "http://localhost:8000")
+    backend_url = os.getenv("BACKEND_URL", "https://stock-ai-agent-backend-49980583353.us-central1.run.app")
     response = requests.get(f"{backend_url}/predict?ticker={ticker}")
     if response.status_code == 200:
         return response.json().get("predicted_price", "N/A")
@@ -64,7 +64,7 @@ def get_stock_prediction(ticker):
 
 # Function to fetch stock news sentiment
 def get_stock_news_sentiment(ticker):
-    backend_url = os.getenv("BACKEND_URL", "http://localhost:8000")
+    backend_url = os.getenv("BACKEND_URL", "https://stock-ai-agent-backend-49980583353.us-central1.run.app")
     response = requests.get(f"{backend_url}/analyze?ticker={ticker}&question=What is the sentiment?")
     if response.status_code == 200:
         return response.json().get("analysis", "No sentiment data available.")
